@@ -1,0 +1,97 @@
+body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: url(images/pic2.jpg);
+    text-align: center;
+    background-size: cover;
+}
+
+#h1{
+    margin-top: 30px;
+    height: 70px;
+    width: 250px;
+    font-size: 5vmin;
+    border-radius: 1rem;
+    background-color: darkgreen;
+    color: rgb(206, 206, 206);
+}
+
+.container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center; 
+    position: relative;
+    z-index: 1; /* container content is on top of the video */
+}
+
+.game {
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5vmin;
+    position: relative;
+    z-index: 2; /* game elements are above the container */
+}
+
+.box {
+    cursor: pointer;
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    font-size: 8vmin;
+    background-color: rgb(167, 86, 39);
+    color: rgb(206, 206, 206);
+    position: relative;
+    z-index: 3; /* boxes are on top of everything else */
+}
+
+#reset-btn {
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color:rgb(167, 86, 39);
+    color: rgb(0, 0, 0);
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 4; /* button is on top of the video */
+}
+
+#new-btn {
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color:rgb(167, 86, 39);
+    color: black;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 4; /* button is on top of the video */
+}
+
+#msg {
+    color: rgb(0, 0, 0);
+    font-size: 5vmin;
+    text-decoration: underline;
+}
+
+.msg-container {
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.hide{
+    display: none;
+}

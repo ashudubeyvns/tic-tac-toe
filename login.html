@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url(images/pic1.jpg);
+            background-size: cover;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .p23{
+            text-shadow: 1px 2px 2px #1C6EA4;
+            color: #000000;
+            text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1888ff, 0 0 30px #1888ff, 0 0 40px #1888ff, 0 0 55px #1888ff, 0 0 75px #1888ff
+        }
+        #login, #createAccount {
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5%;
+            height: 450px;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            display: none;
+        }
+
+        #login.active, #createAccount.active {
+            display: block; 
+        }
+
+        h2 {
+            color: #002842;
+            text-shadow: 1px 2px 2px rgba(28,110,164,0.69);
+            text-decoration: underline;
+            font-size: 50px;
+            line-height: 100px;
+        }
+        .inp {
+            border-radius: 5px;
+            width: 250px;
+            padding: 10px;
+            margin-top:30px;
+        }
+        button {
+            font-size: 10px;
+            border-radius: 5px;
+            width: 100px;
+            padding: 10px;
+            margin-top: 35px;
+
+            color: rgb(255, 255, 255); font-size: 18px; line-height: 18px; padding: 9px; border-radius: 14px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(28, 110, 164) 0%, rgb(35, 136, 203) 50%, rgb(20, 78, 117) 100%); box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); display: inline-block;}
+        button:hover {
+            background: #002944; }
+        button:active {
+            background: #144E75; }
+        
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="login" class="active">
+        <h2>Login</h2>
+        <p class="p23">Ready to Play Tic Tac Toe</p>
+        <input id="loginUsername" class="inp" type="text" placeholder="Username"><br>
+        <input id="loginPassword" class="inp" type="password" placeholder="Password"><br>
+        <button id="loginBtn">Login</button>
+        <p><a href="#" id="showCreateAccount">Create Account</a></p>
+    </div>
+
+    <!-- toggle here -->
+
+    <!-- Create Account Form -->
+    <div id="createAccount">
+        <h1 style="color: #002842;
+            text-shadow: 1px 2px 2px rgba(28,110,164,0.69);">Create Account</h1>
+        <p class="p23">Let's Get Started</p>
+        <input id="createUsername" class="inp" type="text" placeholder="Username"><br>
+        <input id="createPassword" class="inp" type="password" placeholder="Password"><br>
+        <button id="createAccountBtn">Create Account</button>
+        <p><a href="#" id="showLogin">Already have an account? Log in</a></p>
+    </div>
+
+    <script>
+        // Get references to the elements
+        const loginContainer = document.getElementById("login");
+        const createAccountContainer = document.getElementById("createAccount");
+        const loginBtn = document.getElementById("loginBtn");
+        const createAccountBtn = document.getElementById("createAccountBtn");
+        const showCreateAccount = document.getElementById("showCreateAccount");
+        const showLogin = document.getElementById("showLogin");
+
+        // Show Create Account form
+        showCreateAccount.addEventListener("click", () => {
+            loginContainer.classList.remove("active");
+            createAccountContainer.classList.add("active");
+        });
+
+        // Show Login form
+        showLogin.addEventListener("click", () => {
+            createAccountContainer.classList.remove("active");
+            loginContainer.classList.add("active");
+        });
+
+        // Function to create a new account
+        createAccountBtn.addEventListener("click", () => {
+            const username = document.getElementById("createUsername").value;
+            const password = document.getElementById("createPassword").value;
+
+            if (username && password) {
+                // Store the username and password in local storage
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+                alert("Account created successfully!");
+                showLogin.click(); // Switch to Login form after account creation
+            } else {
+                alert("Please enter both a username and password.");
+            }
+        });
+
+        // Function to log in
+        loginBtn.addEventListener("click", () => {
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+
+            // Get stored data from local storage
+            const storedUsername = localStorage.getItem("username");
+            const storedPassword = localStorage.getItem("password");
+
+            // Check if the input matches the stored data
+            if (username === storedUsername && password === storedPassword) {
+                alert("Login successful!");
+                window.location.href = "index.html"; // Redirect to another page
+            } else {
+                alert("Incorrect username or password.");
+            }
+        });
+        
+    </script>
+</body>
+</html>
